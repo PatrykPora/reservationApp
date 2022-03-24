@@ -21,4 +21,7 @@ public class Reservation {
     @JoinColumn(name = "sportsFacilityId")
     private SportsFacility sportsFacility;
 
+    @ManyToOne
+    @JoinColumn(name = "playerId")
+    private Player player;
 }

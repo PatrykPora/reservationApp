@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
@@ -24,4 +27,10 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "playerId")
     private Player player;
+
+    private MatchType matchType;
+
+    private LocalDate dateOfReservation;
+    private LocalTime timeOfReservation;
+    private Duration durationOfReservation;
 }

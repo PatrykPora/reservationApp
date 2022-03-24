@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @Data
+@Entity
 public class League {
 
     @Id
@@ -14,6 +15,7 @@ public class League {
 
     @Column(nullable = false)
     private String nameOfLeague;
+
 
 
 }

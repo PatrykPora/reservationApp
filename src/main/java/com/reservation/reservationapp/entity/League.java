@@ -3,9 +3,11 @@ package com.reservation.reservationapp.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Data
+@Entity
 public class League {
 
     @Id
@@ -15,5 +17,7 @@ public class League {
     @Column(nullable = false)
     private String nameOfLeague;
 
+    @OneToMany(mappedBy = "league")
+    private List<Player> players;
 
 }

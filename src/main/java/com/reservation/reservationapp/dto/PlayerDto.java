@@ -6,7 +6,7 @@ import com.reservation.reservationapp.entity.Role;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Setter
@@ -15,28 +15,29 @@ public class PlayerDto {
 
     private League league;
 
-    @NotNull
+    @NotEmpty
     private String playerLogin;
 
-    @NotNull
+    @NotEmpty
     private String password;
 
-    @NotNull
+    @NotEmpty
     private String retypedPassword;
 
-    @NotNull
+    @NotEmpty
     private String firstName;
 
-    @NotNull
+    @NotEmpty
     private String lastName;
 
-    @NotNull
+    @NotEmpty
     private String phoneNumber;
 
+    @NotEmpty
     private boolean isAbleToBook;
 
-    @NotNull
+    @NotEmpty
     private Role role;
 
-    private List<Reservation> reservationList;
+    private List<ReservationDto> reservationList;
 }

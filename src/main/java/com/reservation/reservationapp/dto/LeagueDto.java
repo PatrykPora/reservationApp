@@ -4,18 +4,18 @@ import com.reservation.reservationapp.entity.Player;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Setter
 @Getter
 public class LeagueDto {
 
-    @NotNull
+    @NotEmpty
     private long id;
 
-    @NotNull
+    @NotEmpty
     private String nameOfLeague;
 
-    private List<Player> players;
+    private List<PlayerDto> players;
 }

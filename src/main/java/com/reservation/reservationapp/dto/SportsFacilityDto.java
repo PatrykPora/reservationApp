@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class SportsFacilityDto {
 
-    private long id;
+    private Long id;
 
     @NotEmpty
     private String name;

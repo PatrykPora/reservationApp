@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @Setter
 public class ReservationDto {
 
-    private long id;
+    private Long id;
 
     @NotEmpty
     private SportsFacilityDto sportsFacility;

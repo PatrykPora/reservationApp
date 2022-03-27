@@ -12,7 +12,7 @@ import java.util.List;
 public class LeagueDto {
 
     @NotEmpty
-    private long id;
+    private Long id;
 
     @NotEmpty
     private String nameOfLeague;

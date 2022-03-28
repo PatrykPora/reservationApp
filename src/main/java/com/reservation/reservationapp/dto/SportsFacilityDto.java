@@ -1,16 +1,19 @@
 package com.reservation.reservationapp.dto;
 
-import com.reservation.reservationapp.entity.Reservation;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@Getter
+@Setter
 public class SportsFacilityDto {
 
-    private long id;
+    private Long id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
-    private List<Reservation> reservations;
+    private List<ReservationDto> reservations;
 }

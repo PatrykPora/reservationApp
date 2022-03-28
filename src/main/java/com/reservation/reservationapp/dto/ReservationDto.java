@@ -5,7 +5,8 @@ import com.reservation.reservationapp.entity.Player;
 import com.reservation.reservationapp.entity.SportsFacility;
 import lombok.Getter;
 import lombok.Setter;
-import javax.validation.constraints.NotNull;
+
+import javax.validation.constraints.NotEmpty;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,24 +15,24 @@ import java.time.LocalTime;
 @Setter
 public class ReservationDto {
 
-    private long id;
+    private Long id;
 
-    @NotNull
-    private SportsFacility sportsFacility;
+    @NotEmpty
+    private SportsFacilityDto sportsFacility;
 
-    @NotNull
-    private Player player;
+    @NotEmpty
+    private PlayerDto player;
 
-    @NotNull
+    @NotEmpty
     private MatchType matchType;
 
-    @NotNull
+    @NotEmpty
     private LocalDate dateOfReservation;
 
-    @NotNull
+    @NotEmpty
     private LocalTime timeOfReservation;
 
-    @NotNull
+    @NotEmpty
     private Duration durationOfReservation;
 
 }

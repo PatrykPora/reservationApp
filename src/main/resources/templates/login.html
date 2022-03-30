@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html :: header">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div style="background-color: ghostwhite" class="container-fluid p-1 text-dark text-center">
+    <h1 style="font-family:'Microsoft Himalaya'">REZERWACJA OBIEKTÓW</h1>
+</div>
+
+<nav th:replace="fragments/navbar.html :: navbar"></nav>
+<a></a>
+
+<div class="container-md p-5 my-5 border">
+    <form method="post" th:action="@{/login}">
+        <h4 style="font-family:'Calibri Light'" class="text-dark">proszę się zalogować</h4>
+        <p>
+            <label class="control-label col-sm-2" for="username">login</label>
+                <div class="col-md-3">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="podaj login" required autofocus>
+                </div>
+        </p>
+        <p>
+            <label class="control-label col-sm-2" for="password">hasło</label>
+                <div class="col-md-3">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="podaj hasło" required>
+                </div>
+        </p>
+        <button class="btn-dark" type="submit">zaloguj</button>
+    </form>
+</div>
+
+
+</body>
+</html>

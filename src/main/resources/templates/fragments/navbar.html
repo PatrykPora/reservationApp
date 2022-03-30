@@ -12,7 +12,7 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/home}">
@@ -22,7 +22,7 @@
             </ul>
         </div>
 
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" >
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/regulations}">
@@ -32,7 +32,7 @@
             </ul>
         </div>
 
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" >
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/sportfacilitytermsofuse}">
@@ -42,7 +42,7 @@
             </ul>
         </div>
 
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" >
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/reservation}">
@@ -52,7 +52,7 @@
             </ul>
         </div>
 
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" >
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/contact}">
@@ -62,7 +62,7 @@
             </ul>
         </div>
 
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="collapse navbar-collapse" >
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/administration}">
@@ -77,7 +77,7 @@
             <span style="color: white">Zalogowano jako: <span sec:authentication="name"></span></span>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/editplayerdata}">
+                    <a class="nav-link" th:href="@{/player/editplayerdata}">
                         <span class="sr-only">edycja</span>
                     </a>
                 </li>

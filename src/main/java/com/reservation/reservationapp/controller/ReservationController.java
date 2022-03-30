@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/reservationpage")
+@RequestMapping("/reservation")
 public class ReservationController {
 
     @GetMapping
     public String getReservationPage(){
-        return "reservationpage";
+        return "reservations";
     }
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/home}">
+                        <span class="sr-only">Strona Główna</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/regulations}">
+                        <span class="sr-only">regulamin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/sportfacilitytermsofuse}">
+                        <span class="sr-only">korzystanie z kortów</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/reservation}">
+                        <span class="sr-only">rezerwacja</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/contact}">
+                        <span class="sr-only">kontakty</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/administration}">
+                        <span class="sr-only">administracja</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div sec:authorize="isAuthenticated()">
+            <span style="color: white">Zalogowano jako: <span sec:authentication="name"></span></span>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/player/editplayerdata}">
+                        <span class="sr-only">edycja</span>
+                    </a>
+                </li>
+            </ul>
+            <form method="post" th:action="@{/logout}">
+                <input type="submit" value="Wyloguj się">
+            </form>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

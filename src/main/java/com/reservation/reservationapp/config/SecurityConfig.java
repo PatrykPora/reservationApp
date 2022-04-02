@@ -2,19 +2,32 @@ package com.reservation.reservationapp.config;
 
 
 import com.reservation.reservationapp.entity.Role;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();}
+    private final UserDetailsService userDetailsService;
+
+    public SecurityConfig(@Qualifier("playerDetailService") final UserDetailsService userDetailsService){
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Override
+    protected UserDetailsService userDetailsService() {
+        return userDetailsService;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();}
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -47,10 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user1").password("{noop}admin").roles(String.valueOf(Role.ADMIN))
-                .and()
-                .withUser("user2").password("{noop}1234").roles(String.valueOf(Role.USER));
-
+            auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }

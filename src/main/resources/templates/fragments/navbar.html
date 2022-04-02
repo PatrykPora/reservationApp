@@ -6,72 +6,47 @@
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+            <!--                aria-controls="navbarResponsive"-->
+            <!--                aria-expanded="false" aria-label="Toggle navigation">-->
+
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/home}">
                         <span class="sr-only">Strona Główna</span>
                     </a>
                 </li>
-            </ul>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/regulations}">
                         <span class="sr-only">regulamin</span>
                     </a>
                 </li>
-            </ul>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/sportfacilitytermsofuse}">
                         <span class="sr-only">korzystanie z kortów</span>
                     </a>
                 </li>
-            </ul>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/reservation}">
                         <span class="sr-only">rezerwacja</span>
                     </a>
                 </li>
-            </ul>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/contact}">
                         <span class="sr-only">kontakty</span>
                     </a>
                 </li>
-            </ul>
-        </div>
-
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
                     <a class="nav-link" th:href="@{/administration}">
                         <span class="sr-only">administracja</span>
                     </a>
                 </li>
             </ul>
         </div>
-
 
         <div sec:authorize="isAuthenticated()">
             <span style="color: white">Zalogowano jako: <span sec:authentication="name"></span></span>

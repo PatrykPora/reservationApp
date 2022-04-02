@@ -20,15 +20,24 @@ public class DbInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        createData("patryk");
-        createData("tomek");
+        createDataWithAdminRole("patryk");
+        createDataWithAdminRole("tomek");
+        createDataWithUserRole("user");
     }
 
-    private void createData(String playerLogin){
+    private void createDataWithAdminRole(String playerLogin){
         Player player = new Player();
         player.setPlayerLogin(playerLogin);
         player.setPassword(passwordEncoder.encode("1234"));
         player.setRole(Role.ADMIN);
+        playerRepo.save(player);
+    }
+
+    private void createDataWithUserRole(String playerLogin){
+        Player player = new Player();
+        player.setPlayerLogin(playerLogin);
+        player.setPassword(passwordEncoder.encode("1234"));
+        player.setRole(Role.USER);
         playerRepo.save(player);
     }
 

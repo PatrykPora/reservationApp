@@ -10,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -27,10 +28,8 @@ public class ReservationDto {
     private MatchType matchType;
 
     @NotEmpty
-    private LocalDate dateOfReservation;
+    private Date dateOfReservation;
 
-    @NotEmpty
-    private LocalTime timeOfReservation;
 
     @NotEmpty
     private Duration durationOfReservation;

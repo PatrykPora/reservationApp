@@ -15,7 +15,6 @@ public class ReservationMapper {
         reservation.setPlayer(PlayerMapper.map(dto.getPlayer()));
         reservation.setMatchType(dto.getMatchType());
         reservation.setDateOfReservation(dto.getDateOfReservation());
-        reservation.setTimeOfReservation(dto.getTimeOfReservation());
         reservation.setDurationOfReservation(dto.getDurationOfReservation());
         return reservation;
     }
@@ -27,7 +26,6 @@ public class ReservationMapper {
         dto.setPlayer(PlayerMapper.map(reservation.getPlayer()));
         dto.setMatchType(reservation.getMatchType());
         dto.setDateOfReservation(reservation.getDateOfReservation());
-        dto.setTimeOfReservation(reservation.getTimeOfReservation());
         dto.setDurationOfReservation(reservation.getDurationOfReservation());
         return dto;
     }

@@ -34,6 +34,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.logout().logoutSuccessUrl("/");
 
+        http.csrf().ignoringAntMatchers("/h2-console/**")
+                // umożliwia wczytywanie stron w ramkach
+                // z tego samego źródła; wymagane dla H2
+                .and()
+                .headers()
+                .frameOptions()
+                .sameOrigin();
+
+
     }
 
     @Override

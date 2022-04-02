@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -30,7 +30,9 @@ public class Reservation {
 
     private MatchType matchType;
 
-    private LocalDate dateOfReservation;
-    private LocalTime timeOfReservation;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateOfReservation;
+
+
     private Duration durationOfReservation;
 }

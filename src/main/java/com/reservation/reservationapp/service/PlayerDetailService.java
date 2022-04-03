@@ -15,6 +15,7 @@ public class PlayerDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String playerLogin) throws UsernameNotFoundException {
-        return playerRepo.findByPlayerLogin(playerLogin).map(PlayerDetailsAdapter::new).orElse(null);
+        return playerRepo.findByPlayerLogin(playerLogin).map(PlayerDetailsAdapter::new)
+                .orElseThrow(() -> new UsernameNotFoundException("Player " + playerLogin + " not found"));
     }
 }

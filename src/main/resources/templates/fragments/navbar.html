@@ -8,9 +8,6 @@
 
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-            <!--                aria-controls="navbarResponsive"-->
-            <!--                aria-expanded="false" aria-label="Toggle navigation">-->
-
             <span class="navbar-toggler-icon"></span>
         </button>
         <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" id="navbarResponsive">
@@ -30,7 +27,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/contact}">Kontakty</a>
                 </li>
-                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
+                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item active">
                     <a class="nav-link" th:href="@{/administration}">Administracja</a>
                 </li>
             </ul>

@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/reservation", "/reservation/**",
                         "/sportfacilitytermsofuse").authenticated()
                 .antMatchers("/administration", "/administration/**")
-                .hasRole(String.valueOf(Role.ADMIN))
+                .hasAuthority(String.valueOf(Role.ADMIN))
                 .antMatchers("/h2").permitAll();
 
         http.formLogin().loginPage("/login").defaultSuccessUrl("/home", true);

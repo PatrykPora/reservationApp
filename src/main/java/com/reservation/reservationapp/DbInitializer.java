@@ -1,44 +1,86 @@
 package com.reservation.reservationapp;
 
-import com.reservation.reservationapp.entity.Player;
-import com.reservation.reservationapp.entity.Role;
+import com.reservation.reservationapp.entity.*;
+import com.reservation.reservationapp.repositories.LeagueRepo;
 import com.reservation.reservationapp.repositories.PlayerRepo;
+import com.reservation.reservationapp.repositories.ReservationRepo;
+import com.reservation.reservationapp.repositories.SportsFacilityRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Component
 public class DbInitializer implements CommandLineRunner {
 
     private final PlayerRepo playerRepo;
     private final PasswordEncoder passwordEncoder;
+    private final LeagueRepo leagueRepo;
+    private final SportsFacilityRepo sportsFacilityRepo;
+    private final ReservationRepo reservationRepo;
 
-    public DbInitializer(PlayerRepo playerRepo, PasswordEncoder passwordEncoder) {
+    public DbInitializer(PlayerRepo playerRepo, PasswordEncoder passwordEncoder, LeagueRepo leagueRepo, SportsFacilityRepo sportsFacilityRepo, ReservationRepo reservationRepo) {
         this.playerRepo = playerRepo;
         this.passwordEncoder = passwordEncoder;
+        this.leagueRepo = leagueRepo;
+        this.sportsFacilityRepo = sportsFacilityRepo;
+        this.reservationRepo = reservationRepo;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        createDataWithAdminRole("patryk");
-        createDataWithAdminRole("tomek");
-        createDataWithUserRole("user");
-    }
+        League league = new League();
+        league.setNameOfLeague("ekstraklasa");
+        leagueRepo.save(league);
 
-    private void createDataWithAdminRole(String playerLogin){
         Player player = new Player();
-        player.setPlayerLogin(playerLogin);
+        player.setPlayerLogin("patryk");
+        player.setFirstName("patryk");
+        player.setLastName("pora");
+        player.setPhoneNumber("500500500");
         player.setPassword(passwordEncoder.encode("1234"));
         player.setRole(Role.ADMIN);
+        player.setLeague(league);
+        player.setAbleToBook(true);
         playerRepo.save(player);
+
+        Player player1 = new Player();
+        player1.setPlayerLogin("tomek");
+        player1.setFirstName("tomek");
+        player1.setLastName("sadkowski");
+        player1.setPhoneNumber("600600600");
+        player1.setPassword(passwordEncoder.encode("1234"));
+        player1.setRole(Role.ADMIN);
+        player1.setLeague(league);
+        player1.setAbleToBook(true);
+        playerRepo.save(player1);
+
+        Player player2 = new Player();
+        player2.setPlayerLogin("user");
+        player2.setFirstName("userName");
+        player2.setLastName("userLastName");
+        player2.setPhoneNumber("700700700");
+        player2.setPassword(passwordEncoder.encode("1234"));
+        player2.setRole(Role.USER);
+        player2.setLeague(league);
+        player2.setAbleToBook(true);
+        playerRepo.save(player2);
+
+        SportsFacility sportsFacility = new SportsFacility();
+        sportsFacility.setName("Court Philippe Chatrier");
+        sportsFacilityRepo.save(sportsFacility);
+
+        Reservation reservation = new Reservation();
+        reservation.setSportsFacility(sportsFacility);
+        reservation.setPlayer(player);
+        reservation.setDateOfReservation(new Date());
+        reservation.setMatchType(MatchType.FRIENDLY);
+        reservation.setDurationOfReservation(Duration.ofMinutes(90));
+        reservationRepo.save(reservation);
     }
 
-    private void createDataWithUserRole(String playerLogin){
-        Player player = new Player();
-        player.setPlayerLogin(playerLogin);
-        player.setPassword(passwordEncoder.encode("1234"));
-        player.setRole(Role.USER);
-        playerRepo.save(player);
-    }
 
 }

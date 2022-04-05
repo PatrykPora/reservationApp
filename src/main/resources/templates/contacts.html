@@ -11,8 +11,26 @@
     <h1 style="font-family:'Microsoft Himalaya'">REZERWACJA OBIEKTÓW</h1>
 </div>
 <nav th:replace="fragments/navbar.html :: navbar"></nav>
-<div>
-    tu bedzie strona z kontaktami do zawodnikow
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <p class="font-weight-bold">Imię i Nazwisko</p>
+        </div>
+        <div class="col-1">
+            <p class="font-weight-bold">numer telefonu</p>
+        </div>
+    </div>
+    <div class="row" th:each="player : ${modelContactsList}">
+        <div class="col-3">
+            <span th:text="${player.lastName}"></span>
+            <span th:text="${player.firstName}"></span>
+        </div>
+        <div class="col-1">
+            <span th:text="${player.phoneNumber}"></span>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

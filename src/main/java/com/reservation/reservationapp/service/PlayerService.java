@@ -8,24 +8,27 @@ import com.reservation.reservationapp.repositories.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
 
 @Service
-public class ContactsService {
+public class PlayerService {
 
     private PlayerRepo playerRepo;
 
     @Autowired
-    public ContactsService(PlayerRepo playerRepo) {
+    public PlayerService(PlayerRepo playerRepo) {
         this.playerRepo = playerRepo;
     }
 
-    public List<PlayerDto> getAll(){
-        Iterable<Player> players = playerRepo.findAll();
-        List<PlayerDto> dtos = PlayerMapper.map((List<Player>) players);
-        dtos.sort(Comparator.comparing(PlayerDto::getLastName));
-        return dtos;
+    public PlayerDto getPlayerByLogin(String login){
+        Player player = playerRepo.findByPlayerLogin(login).orElseThrow();
+        PlayerDto playerDto = PlayerMapper.map(player);
+        return playerDto;
     }
+
+    public void update(PlayerDto playerDto){
+        Player player = PlayerMapper.map(playerDto);
+        playerRepo.save(player);
+    }
+
 
 }

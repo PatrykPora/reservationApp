@@ -11,8 +11,19 @@
     <h1 style="font-family:'Microsoft Himalaya'">REZERWACJA OBIEKTÓW</h1>
 </div>
 <nav th:replace="fragments/navbar.html :: navbar"></nav>
-<div>
-    tu bedzie formularz do edycji danych zawodnika
+<div class="container">
+
+    <div class="col-3">
+    <form action="#"
+          th:object="${playerDto}"
+          th:action="@{/editplayerdata/update}"
+          method="post">
+        <label for="phoneNumber">numer telefonu</label>
+        <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">
+        <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        <button type="submit" class="btn btn-primary">zapisz zmiany</button>
+    </form>
+    </div>
 </div>
 </body>
 </html>

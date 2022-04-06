@@ -15,6 +15,8 @@ public class PlayerDto {
 
     private League league;
 
+    private Long id;
+
     @NotEmpty
     private String playerLogin;
 

@@ -69,6 +69,22 @@ public class DbInitializer implements CommandLineRunner {
         player2.setAbleToBook(true);
         playerRepo.save(player2);
 
+        League league1 = new League();
+        league1.setNameOfLeague("2 liga");
+        leagueRepo.save(league1);
+
+        Player player3 = new Player();
+        player3.setPlayerLogin("adam");
+        player3.setFirstName("adam");
+        player3.setLastName("adamski");
+        player3.setPhoneNumber("123145146");
+        player3.setPassword(passwordEncoder.encode("1234"));
+        player3.setRole(Role.USER);
+        player3.setLeague(league1);
+        player3.setAbleToBook(false);
+        playerRepo.save(player3);
+
+
         SportsFacility sportsFacility = new SportsFacility();
         sportsFacility.setName("Court Philippe Chatrier");
         sportsFacilityRepo.save(sportsFacility);

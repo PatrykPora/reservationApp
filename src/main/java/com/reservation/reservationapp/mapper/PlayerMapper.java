@@ -10,6 +10,7 @@ public class PlayerMapper {
 
     public static Player map(PlayerDto dto){
         Player player = new Player();
+        player.setId(dto.getId());
         player.setPlayerLogin(dto.getPlayerLogin());
         player.setFirstName(dto.getFirstName());
         player.setLastName(dto.getLastName());
@@ -22,6 +23,7 @@ public class PlayerMapper {
 
     public static PlayerDto map(Player player){
         PlayerDto dto = new PlayerDto();
+        dto.setId(player.getId());
         dto.setPlayerLogin(player.getPlayerLogin());
         dto.setFirstName(player.getFirstName());
         dto.setLastName(player.getLastName());

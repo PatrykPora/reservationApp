@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface PlayerRepo extends CrudRepository<Player, Long> {
 
     Optional<Player> findByPlayerLogin(String playerLogin);
+
+
 }

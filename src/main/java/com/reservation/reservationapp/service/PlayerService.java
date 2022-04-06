@@ -30,5 +30,10 @@ public class PlayerService {
         playerRepo.save(player);
     }
 
+    public PlayerDto findPlayerDtoById(Long id){
+        Player player = playerRepo.findById(id).orElseThrow();
+        PlayerDto dto = PlayerMapper.map(player);
+        return dto;
+    }
 
 }

@@ -16,9 +16,10 @@
 
     <div class="col-3">
         <form action="#"
-              th:action="@{/editplayerdata/update/{id} (id=${playerDto.id})}"
+              th:action="@{/player/editplayerdata}"
               th:object="${playerDto}"
               method="post">
+            <input type="hidden" th:field="*{id}" id="id">
             <label for="phoneNumber">numer telefonu</label>
             <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">
             <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
@@ -26,17 +27,6 @@
         </form>
     </div>
 
-<!--    <div class="col-3">-->
-<!--    <form action="#"-->
-<!--          th:object="${playerDto}"-->
-<!--          th:action="@{/editplayerdata}"-->
-<!--          method="post">-->
-<!--        <label for="phoneNumber">numer telefonu</label>-->
-<!--        <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">-->
-<!--        <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>-->
-<!--        <button type="submit" class="btn btn-primary">zapisz zmiany</button>-->
-<!--    </form>-->
-<!--    </div>-->
 </div>
 </body>
 </html>

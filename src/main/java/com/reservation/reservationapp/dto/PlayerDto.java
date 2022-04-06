@@ -35,10 +35,10 @@ public class PlayerDto {
     @NotEmpty
     private String phoneNumber;
 
-    @NotEmpty
+
     private boolean isAbleToBook;
 
-    @NotEmpty
+
     private Role role;
 
     private List<ReservationDto> reservationList;

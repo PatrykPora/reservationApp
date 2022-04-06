@@ -20,6 +20,43 @@
               th:object="${playerDto}"
               method="post">
             <input type="hidden" th:field="*{id}" id="id">
+            <input type="hidden" th:field="*{league}" id="league">
+            <input type="hidden" th:field="*{playerLogin}" id="playerLogin">
+            <input type="hidden" th:field="*{ableToBook}" id="ableToBook">
+            <input type="hidden" th:field="*{role}" id="role">
+            <table>
+                <tr th:each="reservation, itemStat : ${playerDto.reservationList}">
+                    <td>
+                        <input type="hidden" th:name="|reservationList[${itemStat.index}].id|"
+                               th:value="${reservation.getId()}">
+                    </td>
+                    <td>
+                        <input type="hidden" th:name="|reservationList[${itemStat.index}].sportsFacility|"
+                               th:value="${reservation.getSportsFacility()}">
+                    </td>
+                    <td>
+                        <input type="hidden" th:name="|reservationList[${itemStat.index}].player|"
+                               th:value="${reservation.getPlayer()}">
+                    </td>
+                    <td>
+                        <input type="hidden" th:name="|reservationList[${itemStat.index}].matchType|"
+                               th:value="${reservation.getMatchType()}">
+                    </td>
+                    <td>
+                        <input type="hidden" th:name="|reservationList[${itemStat.index}].dateOfReservation|"
+                               th:value="${reservation.getDateOfReservation()}">
+                    </td>
+                    <td>
+                        <input type="hidden" th:name="|reservationList[${itemStat.index}].durationOfReservation|"
+                               th:value="${reservation.getDurationOfReservation()}">
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" th:field="*{password}" id="password">
+            <input type="hidden" th:field="*{retypedPassword}" id="retypedPassword">
+            <input type="hidden" th:field="*{firstName}" id="firstName">
+            <input type="hidden" th:field="*{lastName}" id="lastName">
+
             <label for="phoneNumber">numer telefonu</label>
             <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">
             <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>

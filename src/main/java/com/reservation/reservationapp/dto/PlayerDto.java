@@ -1,7 +1,6 @@
 package com.reservation.reservationapp.dto;
 
 import com.reservation.reservationapp.entity.League;
-import com.reservation.reservationapp.entity.Reservation;
 import com.reservation.reservationapp.entity.Role;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +22,7 @@ public class PlayerDto {
     @NotEmpty
     private String password;
 
-    @NotEmpty
+
     private String retypedPassword;
 
     @NotEmpty
@@ -36,7 +35,7 @@ public class PlayerDto {
     private String phoneNumber;
 
 
-    private boolean isAbleToBook;
+    private boolean ableToBook;
 
 
     private Role role;

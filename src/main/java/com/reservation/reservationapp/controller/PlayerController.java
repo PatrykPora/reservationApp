@@ -31,15 +31,12 @@ public class PlayerController {
         return "editplayerdata";
     }
 
-    @PostMapping("/editplayerdata/update")
-    public String updatePlayer(@AuthenticationPrincipal PlayerDetailsAdapter loggedPlayer,
+    @PostMapping("/editplayerdata")
+    public String updatePlayer(@Valid @ModelAttribute("playerDto") PlayerDto playerDto,
                                BindingResult result, Model model){
         if (result.hasErrors()){
             return "editplayerdata";
         }
-        String playerLogin = loggedPlayer.getUsername();
-        PlayerDto playerDto = playerService.getPlayerByLogin(playerLogin);
-
         playerService.update(playerDto);
         return "redirect:/home";
     }

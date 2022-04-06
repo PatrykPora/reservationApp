@@ -16,7 +16,7 @@
     <div class="col-3">
     <form action="#"
           th:object="${playerDto}"
-          th:action="@{/editplayerdata/update}"
+          th:action="@{/editplayerdata}"
           method="post">
         <label for="phoneNumber">numer telefonu</label>
         <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">

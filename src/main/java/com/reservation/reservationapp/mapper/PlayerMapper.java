@@ -16,6 +16,7 @@ public class PlayerMapper {
         player.setLastName(dto.getLastName());
         player.setPassword(dto.getPassword());
         player.setPhoneNumber(dto.getPhoneNumber());
+        player.setAbleToBook(dto.isAbleToBook());
         player.setLeague(dto.getLeague());
         player.setRole(dto.getRole());
         return player;
@@ -29,6 +30,7 @@ public class PlayerMapper {
         dto.setLastName(player.getLastName());
         dto.setPassword(player.getPassword());
         dto.setPhoneNumber(player.getPhoneNumber());
+        dto.setAbleToBook(player.isAbleToBook());
         dto.setLeague(player.getLeague());
         dto.setRole(player.getRole());
 

@@ -50,9 +50,10 @@
             <div>
                 <label class="control-label col-sm-2" for="retypedPassword">Powtórz hasło</label>
                 <input type="password" th:field="*{retypedPassword}" id="retypedPassword" placeholder="powtórz hasło">
-                <div class="invalid-feedback" style="display: block"
-                     th:if="${#fields.hasErrors('retypedPassword')}"
-                     th:errors="*{retypedPassword}"></div>
+                <p style="color: red"
+                   data-th-each="err : ${#fields.allErrors()}" data-th-text="${err}" class="error">
+                    Invalid input.
+                </p>
             </div>
 
             <div>

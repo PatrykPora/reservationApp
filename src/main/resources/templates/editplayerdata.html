@@ -14,7 +14,7 @@
 <div class="container">
 
 
-    <div class="col-3">
+    <div class="container-md p-5 my-5">
         <form action="#"
               th:action="@{/player/editplayerdata}"
               th:object="${playerDto}"
@@ -25,14 +25,43 @@
             <input type="hidden" th:field="*{ableToBook}" id="ableToBook">
             <input type="hidden" th:field="*{role}" id="role">
 
-            <input type="hidden" th:field="*{password}" id="password">
-            <input type="hidden" th:field="*{retypedPassword}" id="retypedPassword">
-            <input type="hidden" th:field="*{firstName}" id="firstName">
-            <input type="hidden" th:field="*{lastName}" id="lastName">
 
-            <label for="phoneNumber">numer telefonu</label>
-            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">
-            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+            <div>
+                <label class="control-label col-sm-2" for="firstName">Imię</label>
+                <input type="text" th:field="*{firstName}" id="firstName" placeholder="imię">
+                <div class="invalid-feedback" style="display: block" th:if="${#fields.hasErrors('firstName')}"
+                     th:errors="*{firstName}"></div>
+            </div>
+
+            <div>
+                <label class="control-label col-sm-2" for="lastName">Nazwisko</label>
+                <input type="text" th:field="*{lastName}" id="lastName" placeholder="Nazwisko">
+                <div class="invalid-feedback" style="display: block" th:if="${#fields.hasErrors('lastName')}"
+                     th:errors="*{lastName}"></div>
+            </div>
+
+            <div>
+                <label class="control-label col-sm-2" for="password">Hasło</label>
+                <input type="password" th:field="*{password}" id="password" placeholder="hasło">
+                <div class="invalid-feedback" style="display: block" th:if="${#fields.hasErrors('password')}"
+                     th:errors="*{password}"></div>
+            </div>
+
+            <div>
+                <label class="control-label col-sm-2" for="retypedPassword">Powtórz hasło</label>
+                <input type="password" th:field="*{retypedPassword}" id="retypedPassword" placeholder="powtórz hasło">
+                <div class="invalid-feedback" style="display: block"
+                     th:if="${#fields.hasErrors('retypedPassword')}"
+                     th:errors="*{retypedPassword}"></div>
+            </div>
+
+            <div>
+                <label class="control-label col-sm-2" for="phoneNumber">Numer telefonu</label>
+                <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="numer telefonu">
+                <div class="invalid-feedback" style="display: block" th:if="${#fields.hasErrors('phoneNumber')}"
+                     th:errors="*{phoneNumber}"></div>
+            </div>
+
             <button type="submit" class="btn btn-primary">zapisz zmiany</button>
         </form>
     </div>

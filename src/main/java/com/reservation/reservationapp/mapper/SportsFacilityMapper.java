@@ -2,13 +2,14 @@ package com.reservation.reservationapp.mapper;
 
 import com.reservation.reservationapp.dto.SportsFacilityDto;
 import com.reservation.reservationapp.entity.SportsFacility;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class SportsFacilityMapper {
-    public static SportsFacility map(SportsFacilityDto dto) {
+    public static SportsFacility map(SportsFacilityDto dto, PasswordEncoder passwordEncoder) {
         SportsFacility sportsFacility = new SportsFacility();
         sportsFacility.setId(dto.getId());
         sportsFacility.setName(dto.getName());
-        sportsFacility.setReservations(ReservationMapper.map(dto.getReservations()));
+        sportsFacility.setReservations(ReservationMapper.map(dto.getReservations(), passwordEncoder));
         return sportsFacility;
     }
 

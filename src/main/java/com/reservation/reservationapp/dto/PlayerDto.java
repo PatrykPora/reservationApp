@@ -2,12 +2,14 @@ package com.reservation.reservationapp.dto;
 
 import com.reservation.reservationapp.entity.League;
 import com.reservation.reservationapp.entity.Role;
+import com.reservation.reservationapp.validation.PasswordEqualConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@PasswordEqualConstraint(message = "wpisane hasła nie są identyczne")
 @Setter
 @Getter
 public class PlayerDto {
@@ -21,7 +23,6 @@ public class PlayerDto {
 
     @NotEmpty
     private String password;
-
 
     private String retypedPassword;
 

@@ -33,7 +33,7 @@ public class PlayerController {
 
     @PostMapping("/editplayerdata")
     public String updatePlayer(@Valid @ModelAttribute("playerDto") PlayerDto playerDto,
-                               BindingResult result, Model model){
+                               BindingResult result){
         if (result.hasErrors()){
             return "editplayerdata";
         }

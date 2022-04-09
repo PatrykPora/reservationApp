@@ -1,13 +1,12 @@
 package com.reservation.reservationapp.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -26,7 +25,7 @@ public class Player {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean isAbleToBook;
+    private boolean ableToBook;
     private Role role;
 
     @OneToMany(mappedBy = "player")

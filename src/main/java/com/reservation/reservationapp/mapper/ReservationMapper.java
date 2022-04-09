@@ -2,17 +2,18 @@ package com.reservation.reservationapp.mapper;
 
 import com.reservation.reservationapp.dto.ReservationDto;
 import com.reservation.reservationapp.entity.Reservation;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationMapper {
 
-    public static Reservation map(ReservationDto dto) {
+    public static Reservation map(ReservationDto dto, PasswordEncoder passwordEncoder) {
         Reservation reservation = new Reservation();
         reservation.setId(dto.getId());
-        reservation.setSportsFacility(SportsFacilityMapper.map(dto.getSportsFacility()));
-        reservation.setPlayer(PlayerMapper.map(dto.getPlayer()));
+        reservation.setSportsFacility(SportsFacilityMapper.map(dto.getSportsFacility(), passwordEncoder));
+        reservation.setPlayer(PlayerMapper.map(dto.getPlayer(), passwordEncoder));
         reservation.setMatchType(dto.getMatchType());
         reservation.setDateOfReservation(dto.getDateOfReservation());
         reservation.setDurationOfReservation(dto.getDurationOfReservation());
@@ -30,10 +31,10 @@ public class ReservationMapper {
         return dto;
     }
 
-    public static List<Reservation> map(List<ReservationDto> dtos){
+    public static List<Reservation> map(List<ReservationDto> dtos, PasswordEncoder passwordEncoder){
         List<Reservation> reservations = new ArrayList<>();
         for (ReservationDto dto: dtos) {
-            reservations.add(map(dto));
+            reservations.add(map(dto, passwordEncoder));
         }
         return reservations;
     }

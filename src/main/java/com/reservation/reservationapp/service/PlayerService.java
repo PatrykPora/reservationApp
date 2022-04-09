@@ -6,13 +6,18 @@ import com.reservation.reservationapp.entity.Player;
 import com.reservation.reservationapp.mapper.PlayerMapper;
 import com.reservation.reservationapp.repositories.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class PlayerService {
 
+    @Autowired
     private PlayerRepo playerRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public PlayerService(PlayerRepo playerRepo) {
@@ -26,7 +31,7 @@ public class PlayerService {
     }
 
     public void update(PlayerDto playerDto){
-        Player player = PlayerMapper.map(playerDto);
+        Player player = PlayerMapper.map(playerDto, passwordEncoder);
         playerRepo.save(player);
     }
 

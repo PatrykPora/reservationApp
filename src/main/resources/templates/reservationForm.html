@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/head.html :: header">
+    <title>Nowa rezerwacja</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div style="background-color: ghostwhite" class="container-fluid p-1 text-dark text-center">
+    <h1 style="font-family:'Microsoft Himalaya'">REZERWACJA OBIEKTÓW</h1>
+</div>
+<nav th:replace="fragments/navbar.html :: navbar"></nav>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="card" style="width: 38rem">
+            <div class="card-header text-center">
+                Potwierdzenie rezerwacji
+                <!--                TODO date of reservation must be added-->
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <!--                    TODO where the post action should lead-->
+                </form>
+                <div class="form-group row">
+                    <label class="form-label col-md-3 align-middle" for="sportsFacility">Kort</label>
+                    <!--                    TODO must be added connection with kort_id-->
+                    <div class="col-md-9">
+                        <select id="sportsFacility" class="form-control" name="sportsFacility">
+                            <option value="kort1">Kort 1</option>
+                            <!--                        TODO variable with sportsFacility selection-->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="form-label col-md-3 align-middle" for="matchType">Typ rezerwacji</label>
+                    <!--                    TODO must be added connection with matchType-->
+                    <div class="col-md-9">
+                        <select id="matchType" class="form-control" name="matchType">
+                            <option value="type1">Mecz towarzyski</option>
+                            <!--                        TODO variable with matchType selection-->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="form-label col-md-3 align-middle" for="hour">Godzina</label>
+                    <!--                    TODO must be added connection with selected hour-->
+                    <div class="col-md-9">
+                        <input type="text" name="hour" value="Wybrana w rezerwacji godzina (np. 7:00)"
+                               class="form-control" id="hour">
+                        <!--                        TODO displayed selected hour-->
+                        </input>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="form-label col-md-3 align-middle" for="durationOfReservation">Czas trwania</label>
+                    <div class="col-md-9">
+                        <select id="durationOfReservation" class="form-control" name="durationOfReservation">
+                            <option value selected>-------------</option>
+                            <option value="1">1h</option>
+                            <option value="2">1h 30min</option>
+                            <option value="3">2h</option>
+                            <option value="4">2h 30min</option>
+                            <option value="5">3h</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Rezerwuj</button>
+                <a class="btn btn-danger" href="/reservation" role="button">Anuluj</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

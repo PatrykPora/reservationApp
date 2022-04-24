@@ -1,0 +1,26 @@
+.bg-image {
+    background-image: url('../images/court_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.row{
+    background-color: darkgrey;
+}
+
+.row:nth-of-type(odd) {
+    background: #e0e0e0;
+}

@@ -88,6 +88,10 @@ public class DbInitializer implements CommandLineRunner {
         sportsFacility.setName("Court Philippe Chatrier");
         sportsFacilityRepo.save(sportsFacility);
 
+        SportsFacility sportsFacility1 = new SportsFacility();
+        sportsFacility1.setName("Atp final court");
+        sportsFacilityRepo.save(sportsFacility1);
+
         Reservation reservation = new Reservation();
         reservation.setSportsFacility(sportsFacility);
         reservation.setPlayer(player);

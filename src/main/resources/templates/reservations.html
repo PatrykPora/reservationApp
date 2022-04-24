@@ -13,37 +13,35 @@
 <nav th:replace="fragments/navbar.html :: navbar"></nav>
 
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="card" style="width: 60rem">
-            <div class="card-header text-center">
-                <h4>Rezerwacje kortów</h4>
-            </div>
-            <div class="card-body">
+<div class="container justify-content-md-center" style="margin-top: 50px; width: 50%">
+    <div class="card">
+        <div class="card-header text-center">
+            <h4>Rezerwacje kortów</h4>
+        </div>
+        <div class="card-body">
 
-                <table class="table table-sm table-bordered table-hover-cells">
-                    <thead>
+            <table class="table table-sm table-bordered table-hover-cells">
+                <thead>
 
-                        <th scope="col" class="col-sm-1 text-center">Data</th>
-                        <th scope="col" class="col-sm-1 text-center">Godzina</th>
-                        <div th:each="sportsFacility : ${sportsFacilityList}">
-                            <th scope="col" class="text-center" th:text="${sportsFacility.name}"></th>
-                        </div>
+                <th scope="col" class="col-sm-1 text-center">Data</th>
+                <th scope="col" class="col-sm-1 text-center">Godzina</th>
+                <div th:each="sportsFacility : ${sportsFacilityList}">
+                    <th scope="col" class="text-center" th:text="${sportsFacility.name}"></th>
+                </div>
 
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="col-sm-1 text-center align-middle bg-light" th:text="date.name"></td>
-                        <td class="text-center align-middle bg-light">7:00</td>
-                        <td class="text-center text-white" style="background-color: lawngreen">
-                            <span style="font-size: 1rem">7:00</span>
-                            <a th:href="@{reservation/create}">rezerwuj</a>
-                        </td>
-                    </tr>
-                    </tbody>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-sm-1 text-center align-middle bg-light" th:text="date.name"></td>
+                    <td class="text-center align-middle bg-light">7:00</td>
+                    <td class="text-center text-white" style="background-color: lawngreen">
+                        <span style="font-size: 1rem">7:00</span>
+                        <a th:href="@{reservation/create}">rezerwuj</a>
+                    </td>
+                </tr>
+                </tbody>
 
-                </table>
-            </div>
+            </table>
         </div>
     </div>
 
